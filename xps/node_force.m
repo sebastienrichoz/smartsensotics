@@ -13,17 +13,17 @@
 % Returns:
 %   fv:         
 
-function fv = node_force(nodes,edges,idx,rest_len)
+function fv = node_force(nodes,edges,idx,rest_len,neighbors)
 
 % Compute the current length
-cur_len = edgelen(nodes,edges,idx);
+cur_len = edgelen(nodes,edges,idx,neighbors);
 
 
 % % Compute fv (force vector). 
 fv = [0 0 0];       % Force vector
 
-%% Iterate the 4 edges
-for ei=1:4    
+%% Iterate the n neighbors edges
+for ei=1:neighbors    
     if ~isnan(cur_len(ei))
         % If the edge exists
         

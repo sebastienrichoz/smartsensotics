@@ -1,16 +1,14 @@
-%% Parameters
-neighbors = 4;
-na = 10;
+neighbors = 8;
+na = 20;
 nl = 10;
-
 
 %% Generate shapes
 % Mesh after physical deformation (i.e. mesh to imitate).
-[nodes_d edges_d]= gen_ell(3,3,10, neighbors, na, nl);
+[nodes_d, edges_d]= gen_ell(4,2,10, neighbors, na, nl);
 
 
 % Initial mesh (to optimise) that must converge to mesh to imitate
-[nodes_apx edges_apx]= gen_ell(4,4,20, neighbors, na, nl);
+[nodes_apx, edges_apx]= gen_square(10,20,neighbors, na, nl);
 
 
 %% Plot shapes
@@ -24,4 +22,4 @@ plot_edges(nodes_d,edges_d,[0 0 0],'-', neighbors);
 plot_nodes(nodes_apx,'b.');
 plot_edges(nodes_apx,edges_apx,[0 0 1],'-', neighbors);
 
-axis equal;
+axis equal

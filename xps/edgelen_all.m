@@ -3,12 +3,12 @@
 % Returns a nx4 matrix. Each n line contains four lengths of the node edges 
 % NaN indicates that an edge does not exist
 
-function lall = edgelen_all(nodes,edges)
+function lall = edgelen_all(nodes,edges,neighbors)
 
 lall=[];
 
 for idx=1:size(nodes,1)
-    l = edgelen(nodes,edges,idx);
+    l = edgelen(nodes,edges,idx,neighbors);
     lall=[lall;l];
     
 end

@@ -8,7 +8,7 @@
 %   edges_d_len:    Pre-computed target edge lengths
 
 
-function energy=shape_energy(nodes_apx,edges_apx,edges_d_len)
+function energy=shape_energy(nodes_apx,edges_apx,edges_d_len,neighbors)
 
 % debug
 %nodes_apx(1,:)
@@ -19,11 +19,12 @@ function energy=shape_energy(nodes_apx,edges_apx,edges_d_len)
 %nodes_tst=nodes_apx;
 %nodes_tst(1,:)=[0 4 0];
 
-edges_apx_len = edgelen_all(nodes_apx,edges_apx);
+edges_apx_len = edgelen_all(nodes_apx,edges_apx,neighbors);
 %edges_apx_len = edgelen_all(nodes_tst,edges_apx);
 
 % Difference squared
 e_diff = (edges_d_len-edges_apx_len).^2;
+%e_diff = (abs(edges_d_len-edges_apx_len));
 
 % Keep difference squared only for non-nan
 e_diff=e_diff(~isnan(e_diff));

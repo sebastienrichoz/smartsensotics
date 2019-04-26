@@ -11,14 +11,14 @@
 %   plotevery:  Plot the convergence every plotevery iterations
 %               If plotevery is -1 the no plotting occurs.
 
-function nodes_opt = shapeopt_force(nodes_apx,edges_apx,nodes_d,edges_d,plotevery)
+function nodes_opt = shapeopt_force(nodes_apx,edges_apx,nodes_d,edges_d,plotevery,neighbors)
 
 % Pre-compute the target edge lengths
-edges_d_len = edgelen_all(nodes_d,edges_d);
+edges_d_len = edgelen_all(nodes_d,edges_d,neighbors);
 
 %% Parameters
 %Convergence speed
-nu = .5;
+nu = .2;
 % Total iterations
 it = 100;
 
@@ -30,13 +30,13 @@ clf;
 hold on;
 
 % Plot original mesh
-plot_edges(nodes_apx,edges_apx,[.5 .5 .5],'--');
+plot_edges(nodes_apx,edges_apx,[.5 .5 .5],'--',neighbors);
 
 
 %% Convergence iteration
 for i=0:it-1
     
-    fvall = node_force_all(nodes_opt,edges_apx,edges_d_len);
+    fvall = node_force_all(nodes_opt,edges_apx,edges_d_len,neighbors);
 
     fvall = fvall.*nu;
 
@@ -61,6 +61,6 @@ for i=0:it-1
 end
 
 % Plot optimised mesh
-plot_edges(nodes_opt,edges_apx,[0 0 0],'--');
+plot_edges(nodes_opt,edges_apx,[0 0 0],'--',neighbors);
 
 

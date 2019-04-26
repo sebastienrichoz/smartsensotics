@@ -6,11 +6,11 @@ nl = 10;
 
 %% Generate shapes
 % Mesh after physical deformation (i.e. mesh to imitate).
-[nodes_d edges_d]= gen_ell(3,3,10, neighbors, na, nl);
+[nodes_d, edges_d]= gen_ell(4,2,10, neighbors, na, nl);
 
 
 % Initial mesh (to optimise) that must converge to mesh to imitate
-[nodes_apx edges_apx]= gen_ell(4,4,20, neighbors, na, nl);
+[nodes_apx, edges_apx]= gen_ell(10,5,20, neighbors, na, nl);
 
 
 %% Plot shapes

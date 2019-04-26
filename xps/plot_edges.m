@@ -1,7 +1,7 @@
 %% plot_edges(nodes,edges)
 % Plots a line between linked edges
 
-function plot_edges(nodes,edges,col,sty)
+function plot_edges(nodes,edges,col,sty,neighbors)
 
 hold on;
 
@@ -13,7 +13,7 @@ for i=1:size(edges,1)
      %   continue;
     %end
     
-    for j=1:4
+    for j=1:neighbors
         if e(j)>0
             % Edge exists
             

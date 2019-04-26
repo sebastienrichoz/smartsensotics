@@ -14,12 +14,12 @@
 %                       Each line corresponds to the force for the
 %                       corresponding node.
 
-function fvall = node_force_all(nodes,edges,edge_target_len)
+function fvall = node_force_all(nodes,edges,edge_target_len,neighbors)
 
 fvall = zeros(size(nodes,1),3);
 
 for idx=1:size(nodes,1)    
-    fv = node_force(nodes,edges,idx,edge_target_len(idx,:));
+    fv = node_force(nodes,edges,idx,edge_target_len(idx,:),neighbors);
     fvall(idx,:)=fv;
 end
 

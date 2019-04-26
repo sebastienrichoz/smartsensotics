@@ -1,0 +1,25 @@
+function [nodes, edges]=gen_square(s_face, s_length, neighbors)
+
+nc = 10;
+nl = 10;
+
+nodes=[];
+edges=[];
+
+nodes_xy = ssquare(s_face,nc); % distribution of the nodes around z axis
+
+% node index
+nidx = 1;
+for l=0:nl-1
+    z = l * s_length/nl; % Current length
+    for c=0:nc-1
+        v = [nodes_xy(1) nodes_xy(2) z];
+        nodes=[nodes;v];
+        
+        % Edges neighborhood
+        e = edge_neighborhood(neighbors, )
+        
+        
+    end
+end
+    

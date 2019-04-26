@@ -3,12 +3,12 @@
 % does not exist
 %
 % Returns:
-%   1x4 vector containing the edge length or NaN if the edge does not exist
+%   1xNeighbors vector containing the edge length or NaN if the edge does not exist
 
-function l=edgelen(nodes,edges,idx)
+function l=edgelen(nodes,edges,idx,neighbors)
 
 
-l=[NaN NaN NaN NaN];
+l(1:neighbors) = NaN;
 
 %Coordinate of current node
 pc = nodes(idx,:);
@@ -16,7 +16,7 @@ pc = nodes(idx,:);
 %fprintf(1,'Node %d. Coord: %d %d %d.\n',idx,pc(1),pc(2),pc(3));
 
 % Iterate all edges
-for ei = 1:4    
+for ei = 1:neighbors    
     % If edge exists
     if edges(idx,ei)>0
         % Coordinate of neighbor node
